@@ -45,7 +45,7 @@ dbs.create_all()
 
 @app.route('/')
 def home():
-    return "PDAP RULES dah!"
+    return "PDAP RULES!"
 
 # return factory data by id
 @app.route('/factories/<id>', methods=['GET'])
@@ -76,7 +76,7 @@ def create_factory():
 def update_factory(id):
   body = request.get_json()
   db.session.query(Factory).filter_by(id=id).update(
-    dict(sprocket_production_actual=body['sprocket_production_actual'], sprocket_production_goal=body['sprocket_production_goal']))
+    dict(sprocket_production_actual=body['sprocket_production_actual'], sprocket_production_goal=body['sprocket_production_goal'], time=datetime.now()))
   db.session.commit()
   return "factory updated"
 
@@ -105,6 +105,15 @@ def get_sprockets():
   return jsonify(sprockets)
 
 # update sprocket by id
+@app.route('/sprockets/<id>', methods=['PUT'])
+def update_sprocket(id):
+  body = request.get_json()
+  db.session.query(Sprocket).filter_by(id=id).update(
+    dict(teeth=body['teeth'], pitch_diameter=body['pitch_diameter'], outside_diameter=body['outside_diameter'], pitch=body['pitch'], time=datetime.now()))
+  db.session.commit()
+  return "factory updated"
+
+# create sprocket
 @app.route('/sprockets', methods=['POST'])
 def create_sprocket():
   body = request.get_json()
@@ -112,6 +121,7 @@ def create_sprocket():
   dbs.session.commit()
   return "sprocket created"
 
+# delete sprocket by id
 @app.route('/sprockets/<id>', methods=['DELETE'])
 def delete_sprocket(id):
   db.session.query(Sprocket).filter_by(id=id).delete()
