@@ -31,11 +31,8 @@ TEST STEPS:
 Please note, for testing the API I used a free tool called Postman. Any tool can be used to make the API requests, but I found Postman the simplest and most straightforward.
 
 Run "docker compose up --build pythonapp" from the terminal<br>
+	-Make sure you are in the folder the Docker files are in
 	-This should automatically install the requirements and build the image environment needed
-
-Run "docker compose up --build pythonapp" from the terminal AGAIN<br>
-	-I did experience some issues setting up the DB via Docker, and it meant on a clean install, it needs to be run twice. This isn't ideal, but for speed I just moved on
-
 
 For all of the API tests below please use an API testing mechanism like Postman or curl. I will outline the the API call to make, and provide the json formatted body to send to the API in the sections below.
 
