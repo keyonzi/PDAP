@@ -11,7 +11,7 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
     depends_on:
       - db
-      - db2
+      - dbs
 
   db:
     container_name: db
@@ -25,7 +25,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  db2:
+  dbs:
     container_name: dbs
     image: postgres:12
     ports:

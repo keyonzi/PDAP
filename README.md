@@ -6,6 +6,7 @@
 Build a RESTful api that services requests for sprocket factory data and sprockets.
 
 An endpoint that returns all sprocket factory data
+
 	- An endpoint that returns factory data for a given factory id
 	- An endpoint that returns sprockets for a given id
 	- An endpoint that will create new sprocket
